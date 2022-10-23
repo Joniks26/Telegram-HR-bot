@@ -1,0 +1,21 @@
+{
+  "name": "tg-bot-back",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "start": "node index.ts",
+    "dev": "nodemon index.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.20",
+    "ts-node": "^10.9.1"
+  },
+  "dependencies": {
+    "@types/node-telegram-bot-api": "^0.57.5",
+    "node-telegram-bot-api": "^0.59.0"
+  }
+}
