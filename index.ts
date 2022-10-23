@@ -27,22 +27,27 @@ const start = () => {
     bot.on('message', async (msg: Message) => {
         const text = msg.text;
         const chatId = msg.chat.id;
-        const name = msg.from?.first_name;
+        const userId = msg.from?.id
+        const firstName = msg.from?.first_name;
+        const lastName = msg.from?.last_name;
+        const username = msg.from?.username;
+        const isBot = msg.from?.is_bot;
+        const language = msg.from?.language_code;
 
         if (text === '/start') {
             return await bot.sendMessage(chatId, `Привет! Я HR bot. Ты наниматель или кандидат?`, choseRole);
         }
         if (text === '/info') {
-            await bot.sendMessage(chatId, `You are ${name}`, {
-                reply_markup: {
-                    inline_keyboard:[
-                        [{text: 'Заполнить форму', web_app:{url: webAppUrl}}]
-                    ]
-                }
-            });
+            await bot.sendMessage(chatId, `Информация о тебе: 
+            ID: ${userId}; 
+            First Name: ${firstName}; 
+            Last Name: ${lastName}; 
+            Username: ${username};  
+            IsBot: ${isBot}; 
+            Language code: ${language}`);
         }
         if (text === 'Привет') {
-            return await bot.sendMessage(chatId, `Ну привет, ${name} )`);
+            return await bot.sendMessage(chatId, `Ну привет, ${firstName} )`);
         }
         // return bot.sendMessage(chatId, 'Я пока не знаю что ответить... Выбери сообщение из предложенных или перезапусти меня командой /start')
     });
@@ -59,228 +64,221 @@ const start = () => {
         }
 
         if (data === 'Ищу Backend Developer') {
-            return await bot.sendMessage(chatId, `Чудно! Теперь давай создадим вакансию и приложим ссылку для отклика`, {
+            return await bot.sendMessage(chatId, `Чудно! Теперь давай создадим вакансию или заполним описание сообщенем`, {
                 reply_markup: {
                     inline_keyboard:[
-                        [{text: 'Опубликовать вакансию', web_app:{url: createVacancyUrl}}, {text: 'Ссылка для отклика', web_app:{url: webAppUrl}}]
+                        [{text: 'Опубликовать вакансию', web_app:{url: createVacancyUrl}}]
                     ]
                 }
             })
         }
         if (data === 'Ищу Frontend Developer') {
-            return await bot.sendMessage(chatId, `Чудно! Теперь давай создадим вакансию и приложим ссылку для отклика`, {
+            return await bot.sendMessage(chatId, `Чудно! Теперь давай создадим вакансию или заполним описание сообщенем`, {
                 reply_markup: {
                     inline_keyboard:[
-                        [{text: 'Опубликовать вакансию', web_app:{url: createVacancyUrl}}, {text: 'Ссылка для отклика', web_app:{url: webAppUrl}}]
+                        [{text: 'Опубликовать вакансию', web_app:{url: createVacancyUrl}}]
                     ]
                 }
             })
         }
         if (data === 'Ищу Fullstack Developer') {
-            return await bot.sendMessage(chatId, `Чудно! Теперь давай создадим вакансию и приложим ссылку для отклика`, {
+            return await bot.sendMessage(chatId, `Чудно! Теперь давай создадим вакансию или заполним описание сообщенем`, {
                 reply_markup: {
                     inline_keyboard:[
-                        [{text: 'Опубликовать вакансию', web_app:{url: createVacancyUrl}}, {text: 'Ссылка для отклика', web_app:{url: webAppUrl}}]
+                        [{text: 'Опубликовать вакансию', web_app:{url: createVacancyUrl}}]
                     ]
                 }
             })
         }
         if (data === 'Ищу QA Engineer') {
-            return await bot.sendMessage(chatId, `Чудно! Теперь давай создадим вакансию и приложим ссылку для отклика`, {
+            return await bot.sendMessage(chatId, `Чудно! Теперь давай создадим вакансию или заполним описание сообщенем`, {
                 reply_markup: {
                     inline_keyboard:[
-                        [{text: 'Опубликовать вакансию', web_app:{url: createVacancyUrl}}, {text: 'Ссылка для отклика', web_app:{url: webAppUrl}}]
+                        [{text: 'Опубликовать вакансию', web_app:{url: createVacancyUrl}}]
                     ]
                 }
             })
         }
         if (data === 'Ищу Android Developer') {
-            return await bot.sendMessage(chatId, `Чудно! Теперь давай создадим вакансию и приложим ссылку для отклика`, {
+            return await bot.sendMessage(chatId, `Чудно! Теперь давай создадим вакансию или заполним описание сообщенем`, {
                 reply_markup: {
                     inline_keyboard:[
-                        [{text: 'Опубликовать вакансию', web_app:{url: createVacancyUrl}}, {text: 'Ссылка для отклика', web_app:{url: webAppUrl}}]
+                        [{text: 'Опубликовать вакансию', web_app:{url: createVacancyUrl}}]
                     ]
                 }
             })
         }
         if (data === 'Ищу iOS Developer') {
-            return await bot.sendMessage(chatId, `Чудно! Теперь давай создадим вакансию и приложим ссылку для отклика`, {
+            return await bot.sendMessage(chatId, `Чудно! Теперь давай создадим вакансию или заполним описание сообщенем`, {
                 reply_markup: {
                     inline_keyboard:[
-                        [{text: 'Опубликовать вакансию', web_app:{url: createVacancyUrl}}, {text: 'Ссылка для отклика', web_app:{url: webAppUrl}}]
+                        [{text: 'Опубликовать вакансию', web_app:{url: createVacancyUrl}}]
                     ]
                 }
             })
         }
         if (data === 'Ищу Data Scientist') {
-            return await bot.sendMessage(chatId, `Чудно! Теперь давай создадим вакансию и приложим ссылку для отклика`, {
+            return await bot.sendMessage(chatId, `Чудно! Теперь давай создадим вакансию или заполним описание сообщенем`, {
                 reply_markup: {
                     inline_keyboard:[
-                        [{text: 'Опубликовать вакансию', web_app:{url: createVacancyUrl}}, {text: 'Ссылка для отклика', web_app:{url: webAppUrl}}]
+                        [{text: 'Опубликовать вакансию', web_app:{url: createVacancyUrl}}]
                     ]
                 }
             })
         }
         if (data === 'Ищу Data Analyst') {
-            return await bot.sendMessage(chatId, `Чудно! Теперь давай создадим вакансию и приложим ссылку для отклика`, {
+            return await bot.sendMessage(chatId, `Чудно! Теперь давай создадим вакансию или заполним описание сообщенем`, {
                 reply_markup: {
                     inline_keyboard:[
-                        [{text: 'Опубликовать вакансию', web_app:{url: createVacancyUrl}}, {text: 'Ссылка для отклика', web_app:{url: webAppUrl}}]
+                        [{text: 'Опубликовать вакансию', web_app:{url: createVacancyUrl}}]
                     ]
                 }
             })
         }
         if (data === 'Ищу DevOps Engineer') {
-            return await bot.sendMessage(chatId, `Чудно! Теперь давай создадим вакансию и приложим ссылку для отклика`, {
+            return await bot.sendMessage(chatId, `Чудно! Теперь давай создадим вакансию или заполним описание сообщенем`, {
                 reply_markup: {
                     inline_keyboard:[
-                        [{text: 'Опубликовать вакансию', web_app:{url: createVacancyUrl}}, {text: 'Ссылка для отклика', web_app:{url: webAppUrl}}]
+                        [{text: 'Опубликовать вакансию', web_app:{url: createVacancyUrl}}]
                     ]
                 }
             })
         }
         if (data === 'Ищу UI/UX Designer') {
-            return await bot.sendMessage(chatId, `Чудно! Теперь давай создадим вакансию и приложим ссылку для отклика`, {
+            return await bot.sendMessage(chatId, `Чудно! Теперь давай создадим вакансию или заполним описание сообщенем`, {
                 reply_markup: {
                     inline_keyboard:[
-                        [{text: 'Опубликовать вакансию', web_app:{url: createVacancyUrl}}, {text: 'Ссылка для отклика', web_app:{url: webAppUrl}}]
+                        [{text: 'Опубликовать вакансию', web_app:{url: createVacancyUrl}}]
                     ]
                 }
             })
         }
         if (data === 'Ищу Recruiter/HR-manager') {
-            return await bot.sendMessage(chatId, `Чудно! Теперь давай создадим вакансию и приложим ссылку для отклика`, {
+            return await bot.sendMessage(chatId, `Чудно! Теперь давай создадим вакансию или заполним описание сообщенем`, {
                 reply_markup: {
                     inline_keyboard:[
-                        [{text: 'Опубликовать вакансию', web_app:{url: createVacancyUrl}}, {text: 'Ссылка для отклика', web_app:{url: webAppUrl}}]
+                        [{text: 'Опубликовать вакансию', web_app:{url: createVacancyUrl}}]
                     ]
                 }
             })
         }
         if (data === 'Ищу Project Manager') {
-            return await bot.sendMessage(chatId, `Чудно! Теперь давай создадим вакансию и приложим ссылку для отклика`, {
+            return await bot.sendMessage(chatId, `Чудно! Теперь давай создадим вакансию или заполним описание сообщенем`, {
                 reply_markup: {
                     inline_keyboard:[
-                        [{text: 'Опубликовать вакансию', web_app:{url: createVacancyUrl}}, {text: 'Ссылка для отклика', web_app:{url: webAppUrl}}]
+                        [{text: 'Опубликовать вакансию', web_app:{url: createVacancyUrl}}]
                     ]
                 }
             })
         }
         if (data === 'Я Backend Developer') {
-            return await bot.sendMessage(chatId, `Чудно! Теперь давай создадим резюме или пршлем ссылку на него`, {
+            return await bot.sendMessage(chatId, `Чудно! Теперь давай создадим резюме или пришли его в виде файла`, {
                 reply_markup: {
                     inline_keyboard:[
-                        [{text: 'Создать резюме', web_app:{url: createResumeUrl}}, {text: 'Прикрепить существующее', web_app:{url: webAppUrl}}]
+                        [{text: 'Создать резюме', web_app:{url: createResumeUrl}}]
                     ]
                 }
             })
         }
         if (data === 'Я Frontend Developer') {
-            return await bot.sendMessage(chatId, `Чудно! Теперь давай создадим резюме или пршлем ссылку на него`, {
+            return await bot.sendMessage(chatId, `Чудно! Теперь давай создадим резюме или пришли его в виде файла`, {
                 reply_markup: {
                     inline_keyboard:[
-                        [{text: 'Создать резюме', web_app:{url: createResumeUrl}}, {text: 'Прикрепить существующее', web_app:{url: webAppUrl}}]
+                        [{text: 'Создать резюме', web_app:{url: createResumeUrl}}]
                     ]
                 }
             })
         }
         if (data === 'Я Fullstack Developer') {
-            return await bot.sendMessage(chatId, `Чудно! Теперь давай создадим резюме или пршлем ссылку на него`, {
+            return await bot.sendMessage(chatId, `Чудно! Теперь давай создадим резюме или пришли его в виде файла`, {
                 reply_markup: {
                     inline_keyboard:[
-                        [{text: 'Создать резюме', web_app:{url: createResumeUrl}}, {text: 'Прикрепить существующее', web_app:{url: webAppUrl}}]
+                        [{text: 'Создать резюме', web_app:{url: createResumeUrl}}]
                     ]
                 }
             })
         }
         if (data === 'Я QA Engineer') {
-            return await bot.sendMessage(chatId, `Чудно! Теперь давай создадим резюме или пршлем ссылку на него`, {
+            return await bot.sendMessage(chatId, `Чудно! Теперь давай создадим резюме или пришли его в виде файла`, {
                 reply_markup: {
                     inline_keyboard:[
-                        [{text: 'Создать резюме', web_app:{url: createResumeUrl}}, {text: 'Прикрепить существующее', web_app:{url: webAppUrl}}]
+                        [{text: 'Создать резюме', web_app:{url: createResumeUrl}}]
                     ]
                 }
             })
         }
         if (data === 'Я Android Developer') {
-            return await bot.sendMessage(chatId, `Чудно! Теперь давай создадим резюме или пршлем ссылку на него`, {
+            return await bot.sendMessage(chatId, `Чудно! Теперь давай создадим резюме или пришли его в виде файла`, {
                 reply_markup: {
                     inline_keyboard:[
-                        [{text: 'Создать резюме', web_app:{url: createResumeUrl}}, {text: 'Прикрепить существующее', web_app:{url: webAppUrl}}]
+                        [{text: 'Создать резюме', web_app:{url: createResumeUrl}}]
                     ]
                 }
             })
         }
         if (data === 'Я iOS Developer') {
-            return await bot.sendMessage(chatId, `Чудно! Теперь давай создадим резюме или пршлем ссылку на него`, {
+            return await bot.sendMessage(chatId, `Чудно! Теперь давай создадим резюме или пришли его в виде файла`, {
                 reply_markup: {
                     inline_keyboard:[
-                        [{text: 'Создать резюме', web_app:{url: createResumeUrl}}, {text: 'Прикрепить существующее', web_app:{url: webAppUrl}}]
+                        [{text: 'Создать резюме', web_app:{url: createResumeUrl}}]
                     ]
                 }
             })
         }
         if (data === 'Я Data Scientist') {
-            return await bot.sendMessage(chatId, `Чудно! Теперь давай создадим резюме или пршлем ссылку на него`, {
+            return await bot.sendMessage(chatId, `Чудно! Теперь давай создадим резюме или пришли его в виде файла`, {
                 reply_markup: {
                     inline_keyboard:[
-                        [{text: 'Создать резюме', web_app:{url: createResumeUrl}}, {text: 'Прикрепить существующее', web_app:{url: webAppUrl}}]
+                        [{text: 'Создать резюме', web_app:{url: createResumeUrl}}]
                     ]
                 }
             })
         }
         if (data === 'Я Data Analyst') {
-            return await bot.sendMessage(chatId, `Чудно! Теперь давай создадим резюме или пршлем ссылку на него`, {
+            return await bot.sendMessage(chatId, `Чудно! Теперь давай создадим резюме или пришли его в виде файла`, {
                 reply_markup: {
                     inline_keyboard:[
-                        [{text: 'Создать резюме', web_app:{url: createResumeUrl}}, {text: 'Прикрепить существующее', web_app:{url: webAppUrl}}]
+                        [{text: 'Создать резюме', web_app:{url: createResumeUrl}}]
                     ]
                 }
             })
         }
         if (data === 'Я DevOps Engineer') {
-            return await bot.sendMessage(chatId, `Чудно! Теперь давай создадим резюме или пршлем ссылку на него`, {
+            return await bot.sendMessage(chatId, `Чудно! Теперь давай создадим резюме или пришли его в виде файла`, {
                 reply_markup: {
                     inline_keyboard:[
-                        [{text: 'Создать резюме', web_app:{url: createResumeUrl}}, {text: 'Прикрепить существующее', web_app:{url: webAppUrl}}]
+                        [{text: 'Создать резюме', web_app:{url: createResumeUrl}}]
                     ]
                 }
             })
         }
         if (data === 'Я UI/UX Designer') {
-            return await bot.sendMessage(chatId, `Чудно! Теперь давай создадим резюме или пршлем ссылку на него`, {
+            return await bot.sendMessage(chatId, `Чудно! Теперь давай создадим резюме или пришли его в виде файла`, {
                 reply_markup: {
                     inline_keyboard:[
-                        [{text: 'Создать резюме', web_app:{url: createResumeUrl}}, {text: 'Прикрепить существующее', web_app:{url: webAppUrl}}]
+                        [{text: 'Создать резюме', web_app:{url: createResumeUrl}}]
                     ]
                 }
             })
         }
         if (data === 'Я Recruiter/HR-manager') {
-            return await bot.sendMessage(chatId, `Чудно! Теперь давай создадим резюме или пршлем ссылку на него`, {
+            return await bot.sendMessage(chatId, `Чудно! Теперь давай создадим резюме или пришли его в виде файла`, {
                 reply_markup: {
                     inline_keyboard:[
-                        [{text: 'Создать резюме', web_app:{url: createResumeUrl}}, {text: 'Прикрепить существующее', web_app:{url: webAppUrl}}]
+                        [{text: 'Создать резюме', web_app:{url: createResumeUrl}}]
                     ]
                 }
             })
         }
         if (data === 'Я Project Manager') {
-            return await bot.sendMessage(chatId, `Чудно! Теперь давай создадим резюме или пршлем ссылку на него`, {
+            return await bot.sendMessage(chatId, `Чудно! Теперь давай создадим резюме или пришли его в виде файла`, {
                 reply_markup: {
                     inline_keyboard:[
-                        [{text: 'Создать резюме', web_app:{url: createResumeUrl}}, {text: 'Прикрепить существующее', web_app:{url: webAppUrl}}]
+                        [{text: 'Создать резюме', web_app:{url: createResumeUrl}}]
                     ]
                 }
             })
         }
-
-
-
-
-
-
-
     })
 }
 
